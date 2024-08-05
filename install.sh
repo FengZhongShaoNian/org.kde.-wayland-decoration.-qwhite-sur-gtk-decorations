@@ -15,11 +15,13 @@ else
     echo 'org.flatpak.Builder exists.'
 fi
 
-if ! has_flatpak_runtime org.kde.Sdk 5.15-23.08; then
-    echo 'Installing org.kde.Sdk/x86_64/5.15-23.08 with flathub...'
-    flatpak install -y flathub org.kde.Sdk/x86_64/5.15-23.08
+readonly sdk_version='6.7'
+
+if ! has_flatpak_runtime org.kde.Sdk "$sdk_version"; then
+    echo "Installing org.kde.Sdk/x86_64/$sdk_version with flathub..."
+    flatpak install -y "flathub org.kde.Sdk/x86_64/$sdk_version"
 else
-    echo 'org.kde.Sdk/x86_64/5.15-23.08 exists.'
+    echo "org.kde.Sdk/x86_64/$sdk_version exists."
 fi
 
 if [ ! -d ./build ];then

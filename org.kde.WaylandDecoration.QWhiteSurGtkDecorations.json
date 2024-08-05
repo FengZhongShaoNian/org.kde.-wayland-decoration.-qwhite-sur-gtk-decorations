@@ -1,10 +1,10 @@
 {
     "id": "org.kde.WaylandDecoration.QWhiteSurGtkDecorations",
-    "branch": "5.15-23.08",
+    "branch": "6.7",
     "runtime": "org.kde.Platform",
     "build-extension": true,
     "sdk": "org.kde.Sdk",
-    "runtime-version": "5.15-23.08",
+    "runtime-version": "6.7",
     "appstream-compose": false,
     "separate-locales": false,
     "modules": [
@@ -12,7 +12,8 @@
             "name": "qwhitesurgtkdecorations",
             "buildsystem": "cmake-ninja",
             "config-opts": ["-DCMAKE_INSTALL_PREFIX=/usr/share/runtime/lib/plugins/QWhiteSurGtkDecorations",
-                            "-DQT_PLUGINS_DIR=/usr/share/runtime/lib/plugins/QWhiteSurGtkDecorations"],
+                            "-DQT_PLUGINS_DIR=/usr/share/runtime/lib/plugins/QWhiteSurGtkDecorations",
+                            "-DUSE_QT6=ON"],
             "sources": [
                 {
                     "type": "git",
