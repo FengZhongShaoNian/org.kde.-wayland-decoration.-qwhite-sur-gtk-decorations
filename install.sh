@@ -15,7 +15,7 @@ else
     echo 'org.flatpak.Builder exists.'
 fi
 
-readonly sdk_version='5.15-23.08'
+readonly sdk_version='5.15-24.08'
 if ! has_flatpak_runtime org.kde.Platform "$sdk_version"; then
     echo "Installing org.kde.Platform/x86_64/$sdk_version with flathub..."
     flatpak install -y "flathub org.kde.Platform/x86_64/$sdk_version"
@@ -34,6 +34,6 @@ if [ ! -d ./build ];then
     mkdir build
 fi
 
-flatpak run org.flatpak.Builder --force-clean --install --user ./build ./org.kde.WaylandDecoration.QWhiteSurGtkDecorations.json
+flatpak run org.flatpak.Builder --force-clean --install --user ./build ./org.kde.WaylandDecoration.QWhiteSurGtkDecorations.yml
 
 echo 'All Finished.'
