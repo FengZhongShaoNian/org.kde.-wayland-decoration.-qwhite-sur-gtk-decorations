@@ -1,9 +1,9 @@
-id: org.kde.WaylandDecoration.QWhiteSurGtkDecorations
-branch: 5.15-24.08
+id: org.inqlude.WaylandDecoration.QWhiteSurGtkDecorations
+branch: '6.8'
 build-extension: true
 sdk: org.kde.Sdk
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: '6.8'
 appstream-compose: false
 separate-locales: false
 modules:
@@ -13,11 +13,12 @@ modules:
       prefix: /usr/share/runtime/lib/plugins/QWhiteSurGtkDecorations
     config-opts:
       - -DQT_PLUGINS_DIR=/usr/share/runtime/lib/plugins/QWhiteSurGtkDecorations
+      - -DUSE_QT6=ON
     post-install:
-      - install -Dm0644 org.kde.WaylandDecoration.QWhiteSurGtkDecorations.appdata.xml ${FLATPAK_DEST}/share/appdata
+      - install -Dm0644 org.inqlude.WaylandDecoration.QWhiteSurGtkDecorations.appdata.xml ${FLATPAK_DEST}/share/appdata
     sources:
       - type: git
         url: https://gitee.com/fengzhongshaonian/QWhiteSurGtkDecorations.git
         tag: 0.1.0
       - type: file
-        path: org.kde.WaylandDecoration.QWhiteSurGtkDecorations.appdata.xml
+        path: org.inqlude.WaylandDecoration.QWhiteSurGtkDecorations.appdata.xml
