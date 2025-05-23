@@ -10,7 +10,7 @@ has_flatpak_runtime(){
 
 if ! has_flatpak_app org.flatpak.Builder; then
     echo 'Installing org.flatpak.Builder with flathub...'
-    flatpak install -y flathub org.flatpak.Builder
+    sudo flatpak install -y flathub org.flatpak.Builder
 else
     echo 'org.flatpak.Builder exists.'
 fi
