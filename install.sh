@@ -1,5 +1,9 @@
 #!/bin/bash
 
+has_fuse2(){
+    command -v fuse2 &> /dev/null
+}
+
 has_flatpak_app(){
     flatpak list --app --columns=application | grep "$1"  &> /dev/null || return 1
 }
@@ -32,6 +36,11 @@ fi
 
 if [ ! -d ./build ];then
     mkdir build
+fi
+
+if ! has_fuse2 ; then
+    echo 'Installing fuse2 ...'
+    sudo pacman -S fuse2
 fi
 
 flatpak run org.flatpak.Builder --force-clean --install --user ./build ./org.kde.WaylandDecoration.QWhiteSurGtkDecorations.yml
