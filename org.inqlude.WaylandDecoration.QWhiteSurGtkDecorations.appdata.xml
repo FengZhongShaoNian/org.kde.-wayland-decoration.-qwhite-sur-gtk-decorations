@@ -10,8 +10,8 @@
   </description>
   <url type="homepage">https://github.com/FengZhongShaoNian/QWhiteSurGtkDecorations</url>
   <releases>
-    <release version="0.1.0" date="2024-08-04">
-      <url type="details">https://github.com/FengZhongShaoNian/QWhiteSurGtkDecorations/releases/tag/0.1.0</url>
+    <release version="0.2.0" date="2025-10-18">
+      <url type="details">https://github.com/FengZhongShaoNian/QWhiteSurGtkDecorations/releases/tag/0.2.0</url>
       <description>
         <p>Implemented WhiteSur-gtk-theme style client-side decorations for Qt applications</p>
         <ul>
