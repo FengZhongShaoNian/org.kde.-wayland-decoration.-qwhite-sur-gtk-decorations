@@ -18,6 +18,6 @@ modules:
     sources:
       - type: git
         url: https://gitee.com/fengzhongshaonian/QWhiteSurGtkDecorations.git
-        tag: 0.1.0
+        tag: 0.2.0
       - type: file
         path: org.kde.WaylandDecoration.QWhiteSurGtkDecorations.appdata.xml
