@@ -23,7 +23,7 @@ else
     echo 'org.flatpak.Builder exists.'
 fi
 
-readonly sdk_version='6.8'
+readonly sdk_version='6.10'
 if ! has_kde_platform_runtime "$sdk_version"; then
     echo "Installing org.kde.Platform/x86_64/$sdk_version with flathub..."
     sudo flatpak install -y flathub "org.kde.Platform/x86_64/$sdk_version"
