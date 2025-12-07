@@ -1,15 +1,19 @@
 #!/bin/bash
 
 has_fuse2(){
-    command -v fuse2 &> /dev/null
+    pacman -Qs fuse2 &> /dev/null
 }
 
 has_flatpak_app(){
     flatpak list --app --columns=application | grep "$1"  &> /dev/null || return 1
 }
 
-has_flatpak_runtime(){
-    flatpak list --runtime --columns=application,branch | grep "$1" | grep "$2"  &> /dev/null || return 1
+has_kde_platform_runtime(){
+    flatpak list --runtime --columns=application,branch | grep "org.kde.Platform" | grep "$1"  &> /dev/null || return 1
+}
+
+has_kde_sdk_runtime(){
+    flatpak list --runtime --columns=application,branch | grep "org.kde.Sdk" | grep -v "org.kde.Sdk.Locale" | grep "$1"  &> /dev/null || return 1
 }
 
 if ! has_flatpak_app org.flatpak.Builder; then
@@ -19,15 +23,15 @@ else
     echo 'org.flatpak.Builder exists.'
 fi
 
-readonly sdk_version='5.15-24.08'
-if ! has_flatpak_runtime org.kde.Platform "$sdk_version"; then
+readonly sdk_version='5.15-25.08'
+if ! has_kde_platform_runtime "$sdk_version"; then
     echo "Installing org.kde.Platform/x86_64/$sdk_version with flathub..."
     sudo flatpak install -y "flathub org.kde.Platform/x86_64/$sdk_version"
 else
     echo "org.kde.Platform/x86_64/$sdk_version exists."
 fi
 
-if ! has_flatpak_runtime org.kde.Sdk "$sdk_version"; then
+if ! has_kde_sdk_runtime "$sdk_version"; then
     echo "Installing org.kde.Sdk/x86_64/$sdk_version with flathub..."
     sudo flatpak install -y flathub org.kde.Sdk/x86_64/$sdk_version
 else
@@ -44,5 +48,5 @@ if ! has_fuse2 ; then
 fi
 
 flatpak run org.flatpak.Builder --force-clean --install --user ./build ./org.kde.WaylandDecoration.QWhiteSurGtkDecorations.yml
-
+flatpak build-bundle --runtime ~/.local/share/flatpak/repo "QWhiteSurGtkDecorations-$sdk_version.flatpak"  org.kde.WaylandDecoration.QWhiteSurGtkDecorations "$sdk_version"
 echo 'All Finished.'

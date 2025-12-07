@@ -1,9 +1,9 @@
 id: org.kde.WaylandDecoration.QWhiteSurGtkDecorations
-branch: 5.15-24.08
+branch: 5.15-25.08
 build-extension: true
 sdk: org.kde.Sdk
 runtime: org.kde.Platform
-runtime-version: 5.15-24.08
+runtime-version: 5.15-25.08
 appstream-compose: false
 separate-locales: false
 modules:
